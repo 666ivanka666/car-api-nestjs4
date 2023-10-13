@@ -1,11 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { Carsapi } from './type';
-import { CONFIGURABLE_MODULE_ID } from '@nestjs/common/module-utils/constants';
+
 
 @Injectable()
 export class CarsapiService {
-  private carapi: Carsapi[] = [];
+  private cars: Carsapi[] = [];
   carsapis: Carsapi[];
 
   // constructor() {

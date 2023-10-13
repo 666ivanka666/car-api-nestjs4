@@ -33,7 +33,7 @@ import {
   
     @Put(':id')
     updateCarsapi(@Param() params: IdDto, @Body() body: CarsapiDto): Carsapi {
-      return this.carsapiService.updateCarsapi(params.id, body.name);
+      return this.carsapiService.updateCarsapi(params.id, body.name, body.numberOfcars, body.vin, body.typeId, body.modelId);
     }
 
  

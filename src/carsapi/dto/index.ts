@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsNumber, IsUUid } from 'class-validator';
+import { IsNotEmpty, IsString, IsNumber, IsUUID } from 'class-validator';
 
 export class CarsapiDto {
   @IsString()
@@ -13,11 +13,11 @@ export class CarsapiDto {
   @IsNotEmpty()
   vin: string;
 
-  @IsUUid()
+  @IsUUID()
   typeId: string; 
 
 
-  @IsUUid()
+  @IsUUID()
   modelId: string;
 
 }

@@ -6,7 +6,7 @@ import { Carsmodel } from './type';
 
 @Injectable()
 export class CarsmodelService {
-  private carsmodel: Carsmodel[] = [];
+  private cars: Carsmodel[] = [];
   carsmodels: Carsmodel[];
 
   // constructor() {

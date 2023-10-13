@@ -9,7 +9,7 @@ export class CarstypeService {
   insertCarstype(name: string) {
     throw new Error('Method not implemented.');
   }
-  private carstype: Carstype[] = [];
+  private cars: Carstype[] = [];
   carstypes: Carstype[];
 
   // constructor() {
@@ -19,7 +19,7 @@ export class CarstypeService {
   insertCarsmodel(name: string): string {
     const carstypeId = uuidv4();
     const newCarstype = new Carstype(carstypeId, name);
-    this.carstype.push(newCarstype);
+    this.carstypes.push(newCarstype);
     return carstypeId;
   }
 
