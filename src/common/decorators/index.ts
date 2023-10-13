@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class CarsmodelDto {
+export class IdDto {
   @IsString()
   @IsNotEmpty()
-  name: string;
+  id: string;
 }

@@ -8,7 +8,8 @@ import {
   Put,
 } from '@nestjs/common';
 import { CarstypeService } from './carstype.service';
-import { IdDto, CarstypeDto } from './dto';
+import { CarstypeDto } from './dto';
+import { IdDto } from 'src/common/decorators';
 import { Carstype } from './type';
 
 @Controller('carstype')
@@ -22,17 +23,17 @@ export class CarstypeController {
   }
 
   @Get()
-  async getAllCarstype(): Promise<CarstypeDto[]> {
+  getAllCarstype(): Carstype[] {
     return this.carstypeService.getCarstype();
   }
 
   @Get(':id')
-  async getCarstypeById(@Param() params: IdDto): Promise<CarstypeDto> {
+  getCarstypeById(@Param() params: IdDto): Carstype {
     return this.carstypeService.getSingleCarstype(params.id);
   }
 
   @Put(':id')
-  updateCarstype(@Param() params: IdDto, @Body() body: CarstypeDto): CarstypeDto {
+  updateCarstype(@Param() params: IdDto, @Body() body: CarstypeDto): Carstype {
     return this.carstypeService.updateCarstype(params.id, body.name);
   }
 

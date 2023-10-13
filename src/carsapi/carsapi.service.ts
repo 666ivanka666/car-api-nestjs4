@@ -1,22 +1,33 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { Carsapi } from './type';
-
+import { CarstypeService } from 'src/carstype/carstype.service';
+import { CarsmodelService } from 'src/carsmodel/carsmodel.service';
 
 @Injectable()
 export class CarsapiService {
-  private cars: Carsapi[] = [];
-  carsapis: Carsapi[];
+  private carsapis: Carsapi[] = [];
 
-  // constructor() {
-  //   this.carsapis = [];
-  // }
-  // dali ovo treba?
+  constructor(
+    private readonly typeService: CarstypeService,
+    private readonly modelService: CarsmodelService,
+  ) {}
 
-  insertCarsapi(name: string, numberOfcars: number, vin: string, typeId: string, modelId: string): string {
+  insertCarsapi(
+    name: string,
+    numberOfcars: number,
+    vin: string,
+    typeId: string,
+    modelId: string,
+  ): string {
     const carsapiId = uuidv4();
-    const newCarsapi = new Carsapi(carsapiId, name, numberOfcars, vin, typeId, modelId);
-    this.carsapis.push(newCarsapi);
+    // TODO: dodati provjeru, da se provjeri jer typeId i modelId postoje
+    // Treba provjeriti jel typeId postoji u typeServicu
+    // Treba provjeriti jel modelId postoji u modelService
+
+    this.carsapis.push(
+      new Carsapi(carsapiId, name, numberOfcars, vin, typeId, modelId),
+    );
     return carsapiId;
   }
 
@@ -29,7 +40,14 @@ export class CarsapiService {
     return carsapi;
   }
 
-  updateCarsapi(carsapiId: string, name: string, numberOfcars: number, vin: string, typeId: string, modelId: string): Carsapi {
+  updateCarsapi(
+    carsapiId: string,
+    name: string,
+    numberOfcars: number,
+    vin: string,
+    typeId: string,
+    modelId: string,
+  ): Carsapi {
     const [carsapi] = this.findCarsapi(carsapiId);
 
     if (name) {
@@ -50,7 +68,6 @@ export class CarsapiService {
     if (modelId) {
       carsapi.modelId = modelId;
     }
-
 
     return carsapi;
   }

@@ -2,22 +2,13 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { Carsmodel } from './type';
 
-
-
 @Injectable()
 export class CarsmodelService {
-  private cars: Carsmodel[] = [];
-  carsmodels: Carsmodel[];
+  private carsmodels: Carsmodel[] = [];
 
-  // constructor() {
-  //   this.carsmodels = [];
-  // } treba ovo?
-
-  
   insertCarsmodel(name: string): string {
     const carsmodelId = uuidv4();
-    const newCarsmodel = new Carsmodel(carsmodelId, name);
-    this.carsmodels.push(newCarsmodel);
+    this.carsmodels.push(new Carsmodel(carsmodelId, name));
     return carsmodelId;
   }
 
@@ -29,7 +20,6 @@ export class CarsmodelService {
     const [carsmodel] = this.findCarsmodel(carsmodelId);
     return carsmodel;
   }
- 
 
   updateCarsmodel(carsmodelId: string, name: string): Carsmodel {
     const [carsmodel] = this.findCarsmodel(carsmodelId);
@@ -47,7 +37,9 @@ export class CarsmodelService {
   }
 
   private findCarsmodel(id: string): [Carsmodel, number] {
-    const carsmodelIndex = this.carsmodels.findIndex((carsmodel) => carsmodel.id === id);
+    const carsmodelIndex = this.carsmodels.findIndex(
+      (carsmodel) => carsmodel.id === id,
+    );
     if (carsmodelIndex === -1) {
       throw new NotFoundException(`Car model with ID ${id} not found`);
     }

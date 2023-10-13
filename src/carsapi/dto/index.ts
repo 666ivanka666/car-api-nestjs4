@@ -13,18 +13,13 @@ export class CarsapiDto {
   @IsNotEmpty()
   vin: string;
 
-  @IsUUID()
-  typeId: string; 
-
-
-  @IsUUID()
-  modelId: string;
-
-}
-
-
-export class IdDto {
   @IsString()
   @IsNotEmpty()
-  id: string;
+  @IsUUID(4)
+  typeId: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @IsUUID(4)
+  modelId: string;
 }

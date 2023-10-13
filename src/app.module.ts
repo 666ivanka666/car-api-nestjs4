@@ -9,7 +9,6 @@ import { CarsapiModule } from './carsapi/carsapi.module';
 import { CarsapiController } from './carsapi/carsapi.controller';
 import { CarsapiService } from './carsapi/carsapi.service';
 
-
 @Module({
   imports: [CarstypeModule, CarsapiModule, CarsmodelModule],
   controllers: [AppController, CarsmodelController, CarsapiController],

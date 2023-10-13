@@ -2,24 +2,13 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { Carstype } from './type';
 
-
-
 @Injectable()
 export class CarstypeService {
-  insertCarstype(name: string) {
-    throw new Error('Method not implemented.');
-  }
-  private cars: Carstype[] = [];
-  carstypes: Carstype[];
+  private carstypes: Carstype[] = [];
 
-  // constructor() {
-  //   this.carstypes = [];
-  // } TREBA OVO?
-  
-  insertCarsmodel(name: string): string {
+  insertCarstype(name: string): string {
     const carstypeId = uuidv4();
-    const newCarstype = new Carstype(carstypeId, name);
-    this.carstypes.push(newCarstype);
+    this.carstypes.push(new Carstype(carstypeId, name));
     return carstypeId;
   }
 
@@ -48,7 +37,9 @@ export class CarstypeService {
   }
 
   private findCarstype(id: string): [Carstype, number] {
-    const carstypeIndex = this.carstypes.findIndex((carstype) => carstype.id === id);
+    const carstypeIndex = this.carstypes.findIndex(
+      (carstype) => carstype.id === id,
+    );
     if (carstypeIndex === -1) {
       throw new NotFoundException(`Car type with ID ${id} not found`);
     }

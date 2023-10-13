@@ -5,9 +5,3 @@ export class CarstypeDto {
   @IsNotEmpty()
   name: string;
 }
-
-export class IdDto {
-  @IsString()
-  @IsNotEmpty()
-  id: string;
-}
