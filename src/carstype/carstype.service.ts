@@ -12,7 +12,10 @@ export class CarstypeService {
   private carstype: Carstype[] = [];
   carstypes: Carstype[];
 
-
+  // constructor() {
+  //   this.carstypes = [];
+  // } TREBA OVO?
+  
   insertCarsmodel(name: string): string {
     const carstypeId = uuidv4();
     const newCarstype = new Carstype(carstypeId, name);

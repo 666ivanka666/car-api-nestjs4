@@ -9,7 +9,11 @@ export class CarsmodelService {
   private carsmodel: Carsmodel[] = [];
   carsmodels: Carsmodel[];
 
+  // constructor() {
+  //   this.carsmodels = [];
+  // } treba ovo?
 
+  
   insertCarsmodel(name: string): string {
     const carsmodelId = uuidv4();
     const newCarsmodel = new Carsmodel(carsmodelId, name);

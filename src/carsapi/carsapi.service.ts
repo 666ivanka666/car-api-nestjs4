@@ -8,7 +8,10 @@ export class CarsapiService {
   private carapi: Carsapi[] = [];
   carsapis: Carsapi[];
 
-
+  // constructor() {
+  //   this.carsapis = [];
+  // }
+  // dali ovo treba?
 
   insertCarsapi(name: string, numberOfcars: number, vin: string, typeId: string, modelId: string): string {
     const carsapiId = uuidv4();
