@@ -56,15 +56,14 @@ export class CarsapiService {
     if (!typeExists) {
       throw new NotFoundException(`Type sa ID ${typeId} nije nađen`);
     }
-
     if (!modelExists) {
       throw new NotFoundException(`Model sa ID ${modelId} nije nađen`);
     }
-
+    
+    
+  
     const carsapiId = uuidv4();
-    this.carsapis.push(
-      new Carsapi(carsapiId, name, numberOfcars, vin, typeId, modelId),
-    );
+    this.carsapis.push(new Carsapi(carsapiId, name, numberOfcars, vin, typeId, modelId));
     return carsapiId;
   }
 

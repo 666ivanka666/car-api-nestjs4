@@ -5,6 +5,7 @@ import { Carstype } from './type';
 @Injectable()
 export class CarstypeService {
   private carstypes: Carstype[] = [];
+  checkTypeExists: any;
 
   insertCarstype(name: string): string {
     const carstypeId = uuidv4();
