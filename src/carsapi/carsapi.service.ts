@@ -54,10 +54,10 @@ export class CarsapiService {
     const modelExists = this.modelService.checkModelExists(modelId);
 
     if (!typeExists) {
-      throw new NotFoundException(`Type sa ID ${typeId} nije nađen`);
+      throw new NotFoundException(`Type sa ID ${typeId} nije nađen.`);
     }
     if (!modelExists) {
-      throw new NotFoundException(`Model sa ID ${modelId} nije nađen`);
+      throw new NotFoundException(`Model sa ID ${modelId} nije nađen.`);
     }
     
     
