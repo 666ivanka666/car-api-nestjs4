@@ -1,31 +1,3 @@
-// import { Injectable, NotFoundException } from '@nestjs/common';
-// import { v4 as uuidv4 } from 'uuid';
-// import { Carsapi } from './type';
-// import { CarstypeService } from 'src/carstype/carstype.service';
-// import { CarsmodelService } from 'src/carsmodel/carsmodel.service';
-
-// @Injectable()
-// export class CarsapiService {
-//   private carsapis: Carsapi[] = [];
-
-//   constructor(
-//     private readonly typeService: CarstypeService,
-//     private readonly modelService: CarsmodelService,
-//   ) {}
-
-//   insertCarsapi(
-//     name: string,
-//     numberOfcars: number,
-//     vin: string,
-//     typeId: string,
-//     modelId: string,
-//   ): string {
-//     const carsapiId = uuidv4();
-//     // TODO: dodati provjeru, da se provjeri jer typeId i modelId postoje
-//     // Treba provjeriti jel typeId postoji u typeServicu
-//     // Treba provjeriti jel modelId postoji u modelService
-
-
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { Carsapi } from './type';
@@ -48,27 +20,18 @@ export class CarsapiService {
     typeId: string,
     modelId: string,
   ): string {
-   
-    const typeExists = this.typeService.checkTypeExists(typeId);
+    this.typeService.findCarstype(typeId);
 
-    const modelExists = this.modelService.checkModelExists(modelId);
+    this.modelService.findCarsmodel(modelId);
 
-    if (!typeExists) {
-      throw new NotFoundException(`Type sa ID ${typeId} nije nađen.`);
-    }
-    if (!modelExists) {
-      throw new NotFoundException(`Model sa ID ${modelId} nije nađen.`);
-    }
-    
-    
-  
     const carsapiId = uuidv4();
-    this.carsapis.push(new Carsapi(carsapiId, name, numberOfcars, vin, typeId, modelId));
+    this.carsapis.push(
+      new Carsapi(carsapiId, name, numberOfcars, vin, typeId, modelId),
+    );
     return carsapiId;
   }
 
   // #
-
 
   getCarsapi(): Carsapi[] {
     return this.carsapis;

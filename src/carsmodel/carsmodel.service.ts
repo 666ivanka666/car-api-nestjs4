@@ -2,20 +2,9 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { Carsmodel } from './type';
 
-// @Injectable()
-// export class CarsmodelService {
-//   checkModelExists(modelId: string) {
-//     throw new Error('Method not implemented.');
-//   }
-//   private carsmodels: Carsmodel[] = [];
 @Injectable()
 export class CarsmodelService {
   private carsmodels: Carsmodel[] = [];
-
-  checkModelExists(modelId: string): boolean {
-    const modelExists = this.carsmodels.some((model) => model.id === modelId);
-    return modelExists;
-  }
 
   insertCarsmodel(name: string): string {
     const carsmodelId = uuidv4();
@@ -47,7 +36,7 @@ export class CarsmodelService {
     this.carsmodels.splice(index, 1);
   }
 
-  private findCarsmodel(id: string): [Carsmodel, number] {
+  findCarsmodel(id: string): [Carsmodel, number] {
     const carsmodelIndex = this.carsmodels.findIndex(
       (carsmodel) => carsmodel.id === id,
     );

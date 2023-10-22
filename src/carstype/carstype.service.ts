@@ -5,7 +5,6 @@ import { Carstype } from './type';
 @Injectable()
 export class CarstypeService {
   private carstypes: Carstype[] = [];
-  checkTypeExists: any;
 
   insertCarstype(name: string): string {
     const carstypeId = uuidv4();
@@ -37,7 +36,7 @@ export class CarstypeService {
     this.carstypes.splice(index, 1);
   }
 
-  private findCarstype(id: string): [Carstype, number] {
+  findCarstype(id: string): [Carstype, number] {
     const carstypeIndex = this.carstypes.findIndex(
       (carstype) => carstype.id === id,
     );
